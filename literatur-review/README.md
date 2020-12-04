@@ -6,12 +6,12 @@
 
 ## IDEAS
 
-### [iris](/iris)
+### [iris](./iris)
 
 Language : Python
 
 - [x] Exploratory data analytics (Scatter plot, Box plot, Correlation pair plot / heatmap)
 - [ ] Correlation [Pearson](./iris/iris-pearson.ipynb)
 
-### [mushroom](/mushroom)
+### [mushroom](./mushroom)
 
