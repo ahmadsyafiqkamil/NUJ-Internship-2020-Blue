@@ -4,8 +4,6 @@
   - [x] [iris](./iris)
   - [x] [mushroom](./mushroom)
 
-## IDEAS
-
 ### [iris](./iris)
 
 Language : Python
