@@ -1,8 +1,8 @@
 ## TABLE OF CONTENT
 
 - [x] Exploratory Data Analysis Projects (EDA)
-  - [x] [mushroom](../groceries)
-  - [x] [iris](../iris)
+  - [x] [iris](.../iris)
+  - [x] [mushroom](..../mushroom)
 
 ## IDEAS
 
@@ -11,7 +11,7 @@
 Language : Python
 
 - [x] Exploratory data analytics (Scatter plot, Box plot, Correlation pair plot/ heatmap)
-- [ ] Correlation [Pearson](../iris/iris-pearson.ipynb)
+- [ ] Correlation [Pearson](.../iris/iris-pearson.ipynb)
 
 ### [mushroom](/mushroom)
 
