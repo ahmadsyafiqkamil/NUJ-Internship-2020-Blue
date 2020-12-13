@@ -1,3 +1,12 @@
+# Daftar Isi
+<!--ts-->
+   * [Daftar Isi](#daftar-isi)
+   * [Tentang Kami](#tentang-kami)
+   * [Dokumentasi](#dokumentasi)
+      * [ODK Central](#install-odk-central)
+<!--te-->
+
+
 # Tentang Kami
 
 Proyek Strategic-19 adalah sebuah proyek yang diinisiasi oleh Perwakilan Cabang Istimewa (PCINU) Eropa, khususnya PCINU Jerman dan PCINU Belgia yang bekerjasama dengan Genolife dan RMI- PBNU. Proyek ini pertama kali dicetuskan pada awal Juli 2020 dan diluncurkan dalam format pilot project pada bulan September 2020
@@ -14,9 +23,4 @@ Intern:
 - M. Sholahuddin (IT-IE)*
 
 
-Mentor: Wahyu Hadiwikarta, Hendro Wicaksono, Rodlin Billah, Hamidi Putra, Rina Agustina, Susandy*, M. Sholahuddin*.
-
-
-# Daftar Isi
-
-
+Mentor: Wahyu Hadiwikarta, Hendro Wicaksono, Rodlin Billah, Hamidi Putra, Rina Agustina, Susandy, M. Sholahuddin.
