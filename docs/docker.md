@@ -4,7 +4,7 @@
 
 Docker adalah *tools open source* yang dirancang untuk memudahkan pembuatan, penerapan, dan menjalankan aplikasi dengan menggunakan kontainer.
 
-Kontainer memungkinkan *developer* untuk mengemas aplikasi dengan semua bagian yang dibutuhkannya, seperti *libraries* dan dependensi lainnya, dan menerapkannya sebagai satu paket.[[1]](#1)
+Kontainer memungkinkan *developer* untuk mengemas aplikasi dengan semua bagian yang dibutuhkannya, seperti *libraries* dan dependensi lainnya, dan menerapkannya sebagai satu paket [[1]](#1).
 
 # Cara Kerja Docker
 ![cara-kerja-docker](https://docs.docker.com/engine/images/architecture.svg)[[2]](#2)
@@ -12,7 +12,7 @@ Kontainer memungkinkan *developer* untuk mengemas aplikasi dengan semua bagian y
 # Install Docker
 ## Install Docker di Linux
 
-Install menggunakan repository[[3]](#3)
+Install menggunakan repository [[3]](#3)
 
 1. Update repository dan install beberapa packages
 
