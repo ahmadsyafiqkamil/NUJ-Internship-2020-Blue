@@ -2,8 +2,9 @@
 <!--ts-->
    * [Daftar Isi](#daftar-isi)
    * [Tentang Kami](#tentang-kami)
-   * [Dokumentasi](#dokumentasi)
-      * [ODK Central](#install-odk-central)
+   * [Dokumentasi](./docs)
+      * [Docker](./docs/docker.md)
+      * [ODK Central](./docs/odk-central.md)
 <!--te-->
 
 
