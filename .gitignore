@@ -4,3 +4,4 @@
 .RData
 *.csv
 *.tsv
+~$* #temporary files by MS Office
