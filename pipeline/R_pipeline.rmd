@@ -1,0 +1,110 @@
+---
+title: "ACCEPTANCE TEST"
+output:
+  html_document:
+  df_print: paged
+pdf_document: default
+code_folding: hide
+---
+
+```{r library and authentication, echo=FALSE, message=FALSE, warning=FALSE, include=FALSE, paged.print=FALSE}
+# if (!requireNamespace("remotes")) {
+#   install.packages("remotes")
+# }
+
+# remotes::install_github("ropensci/ruODK@main",
+#                         dependencies = TRUE,
+#                         force = TRUE)
+# install.packages("eeptools")
+library(ruODK)
+library(tidyverse)
+library(eeptools)
+
+source("./auth.R")
+
+ruODK::ru_setup(
+  svc = svc,
+  un = un,
+  pw = pw,
+  tz = tz,
+  verbose = TRUE # great for demo or debugging
+  
+)
+```
+
+```{r get data, echo=FALSE, message=FALSE, warning=FALSE, include=FALSE, paged.print=FALSE}
+dataRaw <-
+  ruODK::odata_submission_get(local_dir = fs::path("vignettes/media"),
+                              odkc_version = get_test_odkc_version())
+```
+
+```{r get dob, echo=FALSE, message=FALSE, warning=FALSE, include=FALSE, paged.print=FALSE}
+data <- dataRaw
+colnames(data) <- sub('group_first_page_group_', '', colnames(data))
+colnames(data) <- sub('group_second_page_group_', '', colnames(data))
+
+data$identitas_birth_date = as.Date(data$identitas_birth_date, format = "%m/%d/%Y")
+data$identitas_dob <- age_calc(data$identitas_birth_date, units = "years")
+
+```
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, include=FALSE, paged.print=FALSE}
+idxIsolasi <-
+  which(
+    dataRaw$group_second_page_group_result_calc7 == "Anda harus masuk/tetap melakukan isolasi diri mandiri selama kurun waktu 14 hari. Pantau kesehatan Anda dengan melakukan penilaian mandiri ini setiap hari selama masa isolasi."
+  )
+
+data <- dataRaw[idxIsolasi, ]
+
+dataSymptom <-
+  data[, grep(pattern = "symptom_symptom", x = colnames(dataRaw))]
+symptomList <- c(
+  "Demam",
+  "Batuk atau Sakit Tenggorokan",
+  "Napas Pendek",
+  "Nyeri Otot",
+  "Diare",
+  "Kehilangan kemampuan mencium bau",
+  "Sakit kepala",
+  "Mual atau Muntah",
+  "Pilek/Hidung Mampet",
+  "Nyeri Tenggorokan",
+  "Nafsu Makan Turun",
+  "Gatal"
+)
+colnames(dataSymptom) <- symptomList
+
+symptom_per_subject <- apply(dataSymptom[,symptomList],1, function(x){
+  paste(names(which(x=="yes")), collapse = ", ")
+})
+
+if (length(symptom_per_subject)==0) {
+  data <- data %>% select(group_first_page_group_identitas_date_survey,
+                group_first_page_group_identitas_name,
+                group_first_page_group_identitas_id_respondent,
+                group_first_page_group_identitas_birth_date) %>% 
+  mutate(symptom_per_subject) %>% 
+  mutate("Rekomendasi")
+} else {
+  data <- cbind(strtrim(as.character(data$group_first_page_group_identitas_date_survey),10),
+              data$group_first_page_group_identitas_name,
+              data$group_first_page_group_identitas_id_respondent,
+              strtrim(as.character(data$group_first_page_group_identitas_birth_date),10),
+              symptom_per_subject,"Isolasi Diri"
+)
+}
+
+colnames(data) <- c("Tanggal Periksa","Nama","ID","Tanggal Lahir","Gejala","Rekomendasi")
+
+#"group_first_page_group_identitas_id_respondent"     
+## [10] "group_first_page_group_identitas_gender"            
+## [11] "group_first_page_group_identitas_birth_date"        
+## [12] "group_first_page_group_identitas_date_survey"
+#"group_second_page_group_result_calc7"
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, include=FALSE, paged.print=FALSE}
+# ${tsvout:tsvfile}
+write.table(data, file = "tsvfile", sep = "\t", qmethod = "double", col.names=NA)
+```
