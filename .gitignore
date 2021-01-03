@@ -2,6 +2,12 @@
 .Rproj.user
 .Rhistory
 .RData
+
+# ignore account and password
+auth.R
+
+# ignore data
 *.csv
 *.tsv
+
 ~$* #temporary files by MS Office
