@@ -2,7 +2,7 @@
 
 XLSForm adalah standar formulir yang dibuat untuk membantu menyederhanakan penulisan formulir di Excel. XLSForms mudah digunakan, tetapi memungkinkan pembuatan formulir yang kompleks. Formulir yang dirancang dengan Excel bisa diubah menjadi XForms yang bisa digunakan oleh ODK.
 
-# Jenis Pertanyaan
+# [Jenis Pertanyaan](https://docs.getodk.org/form-question-types/)
 
 ODK Collect mendukung formulir dengan berbagai jenis pertanyaan. Fungsionalitas dan gaya tampilan yang tepat dari setiap pertanyaan ditentukan dalam definisi XLSForm Anda menggunakan kolom tipe dan tampilan.
 
@@ -31,6 +31,19 @@ ODK Collect mendukung formulir dengan berbagai jenis pertanyaan. Fungsionalitas 
 
 ODK Collect mendukung berbagai perilaku bentuk dinamis. Dokumen ini membahas cara menentukan perilaku ini dalam definisi XLSForm Anda.
 
+# [Form Styling](https://docs.getodk.org/form-styling/)
+
+Pertanyaan dapat mencakup Media seperti gambar, suara atau video. Selain itu, label, petunjuk, dan pilihan dalam XLSForm semuanya dapat diberi gaya menggunakan Penurunan harga, font dan warna, dan Emoji.
+
+# [Form Language](https://docs.getodk.org/form-language/)
+
+ODK Collect dan XLSForm mendukung formulir multi-bahasa.
+
+Untuk menambahkan bahasa tambahan ke XLSForm Anda, tambahkan kolom konten yang dihadapi pengguna dengan kolom khusus bahasa.
+
+# [Form Operators and Function](https://docs.getodk.org/form-operators-functions/)
+
+ Ekspresi dalam penghitungan, batasan, dan relevansi dapat berisi operator dan fungsi.
 
 
 # Referensi
