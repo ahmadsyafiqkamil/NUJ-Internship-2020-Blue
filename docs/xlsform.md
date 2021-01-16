@@ -45,6 +45,33 @@ Untuk menambahkan bahasa tambahan ke XLSForm Anda, tambahkan kolom konten yang d
 
  Ekspresi dalam penghitungan, batasan, dan relevansi dapat berisi operator dan fungsi.
 
+# membuat form sederhana
+
+buat form sesuai dengan gambar
+
+![Form Sederhana](./img/xlsform-tutorial1.png)
+
+setelah selesai membuat form, upload di odk. sebelum upload kita buat terlebih dahulu projectnya
+
+![buat project baru](./img/buat_project.png)
+
+akan muncul halaman project, setelah itu tekan tombol new dekat tulisan form
+
+![buat form baru](./img/buat_form_baru.png)
+
+akan muncul modal untuk upload form
+
+![modal upload form](./img/upload_form.png)
+
+setelah itu akan diarahkan ke halaman form, jika ingin melihat hasilnya, tekan tombol preview
+
+![halaman form](./img/halaman_form.png)
+
+hasil form sederhana yang telah kita buat
+
+![hasil form](./img/hasil_form.png)
+
+
 
 # Referensi
 <a id="1">[1]</a> https://docs.getodk.org/xlsform/
