@@ -16,33 +16,45 @@ code_folding: hide
 # remotes::install_github("ropensci/ruODK@main",
 #                         dependencies = TRUE,
 #                         force = TRUE)
-# install.packages("eeptools")
+# install.packages("eeptools") # for calculate age
 
 ### Import Library
 
-library(ruODK)
+# library(ruODK)
 library(tidyverse)
 library(eeptools)
 library(ggplot2)
 
 ### Import Authentication
 source("auth.R")
-
-### Setup ruODK
-ruODK::ru_setup(
-  svc = svc,
-  un = un,
-  pw = pw,
-  tz = tz,
-  verbose = TRUE
-)
 ```
 
 ```{r get data, echo=FALSE, message=FALSE, warning=FALSE, include=FALSE, paged.print=FALSE}
-### Read Data
-dataRaw <-
-  ruODK::odata_submission_get(local_dir = fs::path("vignettes/media"),
-                              odkc_version = get_test_odkc_version())
+
+# Create Empty Data
+dataRaw <- c()
+
+### Loop Read Data
+for (svc in c(svc_afkaaruna, svc_alkarimiyah, svc_inayatullah, svc_maslakulhuda)) {
+  ### Setup ruODK
+  ruODK::ru_setup(
+    svc = svc,
+    un = un,
+    pw = pw,
+    tz = tz,
+    verbose = TRUE
+  )
+  
+  # Get data from ODK
+  dataODK <-
+    ruODK::odata_submission_get(local_dir = fs::path("vignettes/media"))
+  
+  # Cek dimentional of data
+  print(dim(dataODK))
+  
+  dataRaw <- bind_rows(dataRaw, dataODK)
+}
+
 ```
 
 ```{r preprocessing, echo=FALSE, message=FALSE, warning=FALSE, include=TRUE, paged.print=FALSE}
@@ -74,11 +86,12 @@ ggplot(data %>% count(identitas_date_survey), aes(x = identitas_date_survey, n))
 
 
 
+```{r what need to do, echo=FALSE, message=FALSE, warning=FALSE, include=TRUE, paged.print=FALSE}
+# Retrieve data from ODK, MERGE ALL (Form) -> Beda ROW
+# Adv (Clustering)
 
 
-
-
-
+```
 
 
 
