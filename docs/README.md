@@ -6,4 +6,7 @@
 
 3. [Penjelasan XLSForm dan Instalasinya](./xlsform.md)
 
-4. [Penjelasan LabKey dan Instalasinya](./labkey.md)
+4. [Penjelasan LabKey dan Instalasinya]
+
+    a. [Install LabKey dengan Docker](./labkey-docker.md)
+    b. [Install LabKey (clean-install)](./labkey-clean.md)
