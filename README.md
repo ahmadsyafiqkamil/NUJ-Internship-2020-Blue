@@ -6,7 +6,7 @@
       * [Docker](./docs/docker.md)
       * [ODK Central](./docs/odk-central.md)
       * [XLSForm](./docs/xlsform.md)
-      * [LabKey](./docs/labkey.md)
+      * LabKey [docker](./docs/labkey-docker.md) atau [clean install](./docs/labkey-clean.md)
 <!--te-->
 
 
