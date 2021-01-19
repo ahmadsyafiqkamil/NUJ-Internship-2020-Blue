@@ -20,7 +20,7 @@ code_folding: hide
 
 ### Import Library
 
-# library(ruODK)
+library(ruODK)
 library(tidyverse)
 library(eeptools)
 library(ggplot2)
@@ -35,7 +35,10 @@ source("auth.R")
 dataRaw <- c()
 
 ### Loop Read Data
-for (svc in c(svc_afkaaruna, svc_alkarimiyah, svc_inayatullah, svc_maslakulhuda)) {
+for (svc in c(svc_alkarimiyah,
+              svc_afkaaruna,
+              svc_inayatullah,
+              svc_maslakulhuda)) {
   ### Setup ruODK
   ruODK::ru_setup(
     svc = svc,
@@ -60,27 +63,35 @@ for (svc in c(svc_afkaaruna, svc_alkarimiyah, svc_inayatullah, svc_maslakulhuda)
 ```{r preprocessing, echo=FALSE, message=FALSE, warning=FALSE, include=TRUE, paged.print=FALSE}
 ### Data Preprocessing
 data <- dataRaw
-colnames(data) <- sub('group_first_page_group_', '', colnames(data)) # rename column name
-colnames(data) <- sub('group_second_page_group_', '', colnames(data)) # rename column name
+colnames(data) <-
+  sub('group_first_page_group_', '', colnames(data)) # rename column name
+colnames(data) <-
+  sub('group_second_page_group_', '', colnames(data)) # rename column name
 
-dataName <- c('identitas_name','tracer_name1','tracer_name2','tracer_name3')
-data[dataName] <- lapply(data[dataName], str_to_title)  #Change name to TitleCase
+dataName <-
+  c('identitas_name',
+    'tracer_name1',
+    'tracer_name2',
+    'tracer_name3')
+data[dataName] <-
+  lapply(data[dataName], str_to_title)  #Change name to TitleCase
 
 ```
 
 ```{r dob gender, echo=FALSE, message=FALSE, warning=FALSE, include=TRUE, paged.print=FALSE}
 ### Calculate DOB
-
 data$identitas_birth_date = as.Date(data$identitas_birth_date, format = "%m/%d/%Y")
-data$identitas_dob <- age_calc(data$identitas_birth_date, units = "years")
+data$identitas_dob <-
+  age_calc(data$identitas_birth_date, units = "years")
 
 ggplot(data, aes(x = identitas_dob, fill = identitas_gender)) + geom_histogram(bins = 7, position = "dodge")
 
 ```
 
 ```{r date survey, echo=FALSE, message=FALSE, warning=FALSE, include=TRUE, paged.print=FALSE}
-ggplot(data %>% count(identitas_date_survey), aes(x = identitas_date_survey, n)) + 
-  geom_line(color="blue")
+ggplot(data %>% count(identitas_date_survey),
+       aes(x = identitas_date_survey, n)) +
+  geom_line(color = "blue")
 ```
 
 
@@ -88,6 +99,7 @@ ggplot(data %>% count(identitas_date_survey), aes(x = identitas_date_survey, n))
 
 ```{r what need to do, echo=FALSE, message=FALSE, warning=FALSE, include=TRUE, paged.print=FALSE}
 # Retrieve data from ODK, MERGE ALL (Form) -> Beda ROW
+# Rename, pie chart per symtom
 # Adv (Clustering)
 
 
@@ -153,5 +165,8 @@ colnames(data) <- c("Tanggal Periksa","Nama","ID","Tanggal Lahir","Gejala","Reko
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE, include=FALSE, paged.print=FALSE}
 # ${tsvout:tsvfile}
-write.table(data, file = "tsvfile", sep = "\t", qmethod = "double", col.names=NA)
+# write.table(data, file = "tsvfile", sep = "\t", qmethod = "double", col.names=NA)
+
+write.table(dataRaw, file = "dataRaw_asli.csv", sep = ",", qmethod = "double", col.names=NA)
+
 ```
