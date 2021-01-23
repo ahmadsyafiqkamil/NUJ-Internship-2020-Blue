@@ -52,7 +52,7 @@ for (svc in c(svc_alkarimiyah,
   dataODK <-
     ruODK::odata_submission_get(local_dir = fs::path("vignettes/media"))
   
-  # Cek dimentional of data
+  # Check dimensional of data
   print(dim(dataODK))
   
   dataRaw <- bind_rows(dataRaw, dataODK)
